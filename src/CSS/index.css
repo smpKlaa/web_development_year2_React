@@ -2,7 +2,23 @@ html {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-img,
-video {
-  width: 50%;
+.single-div {
+  width: 60vw;
+  margin: 1rem auto 0;
+  display: flex;
+  position: relative;
+}
+
+.single-div h2 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.big-media {
+  width: 60vw;
+}
+
+.thumbnail {
+  width: 80%;
 }

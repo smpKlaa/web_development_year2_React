@@ -1,11 +1,13 @@
+import {Link} from 'react-router';
+
 const MediaRow = (props) => {
-  const {item, setSelectedItem} = props;
+  const {item} = props;
 
   return (
     <>
       <tr>
         <td>
-          <img src={item.thumbnail} alt={item.title}></img>
+          <img class="thumbnail" src={item.thumbnail} alt={item.title}></img>
         </td>
         <td>{item.title}</td>
         <td>{item.description}</td>
@@ -13,13 +15,9 @@ const MediaRow = (props) => {
         <td>{item.filesize}</td>
         <td>{item.media_type}</td>
         <td>
-          <button
-            onClick={() => {
-              setSelectedItem(item);
-            }}
-          >
+          <Link to="/single" state={{item: item}}>
             Select
-          </button>
+          </Link>
         </td>
       </tr>
     </>
