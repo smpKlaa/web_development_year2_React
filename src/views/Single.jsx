@@ -9,7 +9,7 @@ const Single = () => {
       <div>
         <div class="single-div">
           <button onClick={() => navigate(-1)}>&lt;Back</button>
-          <h2>{item.title}</h2>
+          <h2>{`${item.title} by ${item.username}`}</h2>
         </div>
         <p>{item.description}</p>
 

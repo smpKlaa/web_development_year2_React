@@ -2,6 +2,19 @@ html {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+table {
+  table-layout: fixed;
+  width: 96vw;
+}
+
+td > div {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  height: 20vh;
+  max-height: 20vh !important;
+}
+
 .single-div {
   width: 60vw;
   margin: 1rem auto 0;

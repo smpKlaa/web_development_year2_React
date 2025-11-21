@@ -1,6 +1,5 @@
 import {useState, useEffect} from 'react';
 import MediaRow from '../components/MediaRow';
-// import SingleView from '../components/SingleView';
 import Single from './Single';
 import {fetchData} from '../utils/fetchData';
 
@@ -10,8 +9,18 @@ const Home = () => {
 
   const getMedia = async () => {
     try {
-      const json = await fetchData('test.json');
-      setMediaArray(json);
+      const temp = await fetchData(import.meta.env.VITE_MEDIA_API + '/media');
+
+      Promise.all(
+        temp.map(async (item) => {
+          const result = await fetchData(
+            `${import.meta.env.VITE_AUTH_API}/users/${item.user_id}`,
+          );
+          return {...item, username: result.username};
+        }),
+      ).then((newArray) => {
+        setMediaArray(newArray);
+      });
     } catch (error) {
       console.log('Error:', error);
     }
@@ -36,10 +45,12 @@ const Home = () => {
           <tr>
             <th>Thumbnail</th>
             <th>Title</th>
+            <th>Username</th>
             <th>Description</th>
             <th>Created</th>
             <th>Size</th>
             <th>Type</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>

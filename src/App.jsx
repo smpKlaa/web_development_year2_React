@@ -9,8 +9,7 @@ import Upload from './views/Upload';
 function App() {
   return (
     <>
-      <BrowserRouter>
-        {/* <BrowserRouter basename="/~sampokl/wsk-routing/"> */}
+      <BrowserRouter basename="/~sampokl/hooks/">
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />

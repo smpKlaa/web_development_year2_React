@@ -7,17 +7,34 @@ const MediaRow = (props) => {
     <>
       <tr>
         <td>
-          <img class="thumbnail" src={item.thumbnail} alt={item.title}></img>
+          <div>
+            <img class="thumbnail" src={item.thumbnail} alt={item.title}></img>
+          </div>
         </td>
-        <td>{item.title}</td>
-        <td>{item.description}</td>
-        <td>{new Date(item.created_at).toLocaleString('fi-FI')}</td>
-        <td>{item.filesize}</td>
-        <td>{item.media_type}</td>
         <td>
-          <Link to="/single" state={{item: item}}>
-            Select
-          </Link>
+          <div>{item.title}</div>
+        </td>
+        <td>
+          <div>{item.username}</div>
+        </td>
+        <td>
+          <div>{item.description}</div>
+        </td>
+        <td>
+          <div>{new Date(item.created_at).toLocaleString('fi-FI')}</div>
+        </td>
+        <td>
+          <div>{item.filesize}</div>
+        </td>
+        <td>
+          <div>{item.media_type}</div>
+        </td>
+        <td>
+          <div>
+            <Link to="/single" state={{item: item}}>
+              Select
+            </Link>
+          </div>
         </td>
       </tr>
     </>
