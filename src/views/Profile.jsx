@@ -13,11 +13,16 @@ const Profile = () => {
     });
   }, []);
   return (
-    <>
-      <p>username: {user?.username ? user.username : ''}</p>
-      <p>email: {user?.email ? user.email : ''}</p>
-      <p>created: {user?.created_at ? user.created_at : ''}</p>
-    </>
+    <div>
+      {user && (
+        <>
+          <h1>Profile</h1>
+          <p>Username: {user.username}</p>
+          <p>Email: {user.email}</p>
+          <p>Created: {user.created_at}</p>
+        </>
+      )}
+    </div>
   );
 };
 
