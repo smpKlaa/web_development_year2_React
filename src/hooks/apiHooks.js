@@ -75,7 +75,33 @@ const useUser = () => {
     }
   };
 
-  return {getUserByToken};
+  const postUser = async (user) => {
+    try {
+      const body = {
+        username: user.username,
+        password: user.password,
+        email: user.email,
+      };
+      console.log('BODY', body);
+      const options = {
+        method: 'POST',
+        body: JSON.stringify(body),
+        'Content-Type': 'application/json',
+      };
+      const response = await fetchData(
+        import.meta.env.VITE_AUTH_API + '/users',
+        options,
+      );
+      if (!response.ok) {
+        return false;
+      }
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return {getUserByToken, postUser};
 };
 
 export {useMedia, useAuthentication, useUser};

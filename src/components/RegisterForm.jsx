@@ -1,51 +1,44 @@
-import {useAuthentication} from '../hooks/apiHooks';
+import {useUser} from '../hooks/apiHooks';
 import useForm from '../hooks/formHooks';
 import {useNavigate} from 'react-router';
 
-function LoginForm() {
+const RegisterForm = () => {
   const initValues = {
     username: '',
+    email: '',
     password: '',
   };
 
-  const {postLogin} = useAuthentication();
+  const {postUser} = useUser();
 
   const navigate = useNavigate();
 
   const {inputs, handleInputChange, handleSubmit} = useForm(
-    doLogin,
+    doRegister,
     initValues,
   );
 
-  async function doLogin() {
+  async function doRegister() {
     console.log(inputs);
 
-    const token = await postLogin(inputs);
-
-    if (token) {
-      localStorage.setItem('token', token);
-      navigate('/');
-    } else {
-      console.log('Login failed');
-    }
+    postUser(inputs);
+    navigate('/');
   }
-
-  console.log(inputs);
 
   return (
     <>
-      <h1>Login</h1>
+      <h1>Register</h1>
       <form
         onSubmit={(e) => {
           handleSubmit(e);
         }}
       >
         <div>
-          <label htmlFor="loginuser">Username</label>
+          <label htmlFor="registeruser">Username</label>
           <input
             name="username"
             type="text"
-            id="loginuser"
+            id="registeruser"
             onChange={(e) => {
               handleInputChange(e);
             }}
@@ -54,11 +47,24 @@ function LoginForm() {
           />
         </div>
         <div>
-          <label htmlFor="loginpassword">Password</label>
+          <label htmlFor="registeremail">Email</label>
+          <input
+            name="email"
+            type="email"
+            id="registeremail"
+            onChange={(e) => {
+              handleInputChange(e);
+            }}
+            autoComplete="email"
+            value={inputs.email}
+          />
+        </div>
+        <div>
+          <label htmlFor="registerpassword">Password</label>
           <input
             name="password"
             type="password"
-            id="loginpassword"
+            id="registerpassword"
             onChange={(e) => {
               handleInputChange(e);
             }}
@@ -66,10 +72,10 @@ function LoginForm() {
             value={inputs.password}
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit">Register</button>
       </form>
     </>
   );
-}
+};
 
-export default LoginForm;
+export default RegisterForm;

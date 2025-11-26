@@ -11,7 +11,7 @@ import Logout from './views/Logout';
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename="/~sampokl/forms/">
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
