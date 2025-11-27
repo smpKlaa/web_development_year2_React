@@ -1,7 +1,14 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Link, Outlet} from 'react-router';
+import {useUserContext} from '../hooks/contextHooks';
 
 const Layout = () => {
+  const {user, handleAutoLogin} = useUserContext();
+
+  useEffect(() => {
+    handleAutoLogin();
+  }, []);
+
   return (
     <>
       <div>
@@ -17,7 +24,11 @@ const Layout = () => {
               <Link to="/upload">Upload</Link>
             </li>
           </ul>
-          <Link to="/login">Login</Link>
+          {user ? (
+            <Link to="/logout">Log out</Link>
+          ) : (
+            <Link to="/login">Login</Link>
+          )}
         </nav>
         <main>
           <Outlet />

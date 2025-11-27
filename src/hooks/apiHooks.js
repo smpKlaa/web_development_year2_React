@@ -46,7 +46,7 @@ const useAuthentication = () => {
       );
 
       console.log('login result:', loginResult);
-      return loginResult.token;
+      return loginResult;
     } catch (error) {
       console.log(error);
       return false;
