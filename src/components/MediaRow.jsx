@@ -8,7 +8,11 @@ const MediaRow = (props) => {
       <tr>
         <td>
           <div>
-            <img class="thumbnail" src={item.thumbnail} alt={item.title}></img>
+            <img
+              className="thumbnail"
+              src={item.thumbnail}
+              alt={item.title}
+            ></img>
           </div>
         </td>
         <td>

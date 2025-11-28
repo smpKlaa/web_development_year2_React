@@ -6,7 +6,7 @@ const SingleView = (props) => {
         <article>
           <header>
             <button
-              class="close"
+              className="close"
               onClick={() => setSelectedItem(null)}
             ></button>
             <h2>{item.title}</h2>

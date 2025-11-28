@@ -71,6 +71,7 @@ const UserProvider = ({children}) => {
         const result = await getUserByToken(token);
         // set user to state
         setUser(result);
+        console.log('Autologin successful', result);
         // navigate to home
         navigate(location.pathname);
       } else {
