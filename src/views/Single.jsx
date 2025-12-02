@@ -7,9 +7,11 @@ const Single = () => {
   return (
     <>
       <div>
-        <div className="single-div">
-          <button onClick={() => navigate(-1)}>&lt;Back</button>
-          <h2>{`${item.title} by ${item.username}`}</h2>
+        <div className="flex justify-center">
+          <button className="absolute" onClick={() => navigate('../')}>
+            &lt;Back
+          </button>
+          <h2 className="justify-self-center">{`${item.title} by ${item.username}`}</h2>
         </div>
         <p>{item.description}</p>
 

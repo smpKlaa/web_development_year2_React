@@ -1,6 +1,6 @@
 import {BrowserRouter, Routes, Route} from 'react-router';
-import './CSS/App.css';
-import Layout from './components/layout';
+// import './CSS/App.css';
+import Layout from './components/Layout';
 import Profile from './views/Profile';
 import Home from './views/Home';
 import Single from './views/Single';
@@ -13,7 +13,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 function App() {
   return (
     <>
-      <BrowserRouter basename="~sampokl/upload/">
+      <BrowserRouter>
         <UserProvider>
           <Routes>
             <Route path="/" element={<Layout />}>

@@ -5,7 +5,7 @@ const MediaRow = (props) => {
 
   return (
     <>
-      <tr>
+      <tr className="max-h-34 *:px-2!">
         <td>
           <div>
             <img
@@ -16,26 +16,32 @@ const MediaRow = (props) => {
           </div>
         </td>
         <td>
-          <div>{item.title}</div>
+          <div className="max-h-34">{item.title}</div>
         </td>
         <td>
-          <div>{item.username}</div>
+          <div className="max-h-34">{item.username}</div>
         </td>
         <td>
-          <div>{item.description}</div>
+          <div className="overflow-clip max-h-34">{item.description}</div>
         </td>
         <td>
-          <div>{new Date(item.created_at).toLocaleString('fi-FI')}</div>
+          <div className="max-h-34">
+            {new Date(item.created_at).toLocaleString('fi-FI')}
+          </div>
         </td>
         <td>
-          <div>{item.filesize}</div>
+          <div className="max-h-34">{item.filesize}</div>
         </td>
         <td>
-          <div>{item.media_type}</div>
+          <div className="max-h-34">{item.media_type}</div>
         </td>
         <td>
-          <div>
-            <Link to="/single" state={{item: item}}>
+          <div className="max-h-34">
+            <Link
+              className="no-underline! px-3! py-2! border-2 border-transparent hover:border-fuchsia-300 hover:rounded-xl! hover:no-underline!"
+              to="/single"
+              state={{item: item}}
+            >
               Select
             </Link>
           </div>

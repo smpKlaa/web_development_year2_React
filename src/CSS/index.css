@@ -1,37 +1,11 @@
-html {
-  font-family: Arial, Helvetica, sans-serif;
-}
+@import 'tailwindcss';
 
-table {
-  table-layout: fixed;
-  width: 96vw;
+@layer base {
+  #root {
+    width: 100%;
+    margin: 0 auto;
+    padding: 2vw;
+    text-align: center;
+  }
 }
-
-td > div {
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  height: 20vh;
-  max-height: 20vh !important;
-}
-
-.single-div {
-  width: 60vw;
-  margin: 1rem auto 0;
-  display: flex;
-  position: relative;
-}
-
-.single-div h2 {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.big-media {
-  width: 60vw;
-}
-
-.thumbnail {
-  width: 80%;
-}
+@tailwind utilities;

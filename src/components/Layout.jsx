@@ -15,14 +15,29 @@ const Layout = () => {
       <div>
         <nav>
           <ul>
-            <li>
-              <Link to="/">Home</Link>
+            <li className="ml-2!">
+              <Link
+                to="/"
+                className="px-3! py-2! border-2 border-transparent hover:border-fuchsia-300 hover:rounded-xl! hover:no-underline!"
+              >
+                Home
+              </Link>
+            </li>
+            <li className="mx-2!">
+              <Link
+                to="/profile"
+                className="px-3! py-2! border-2 border-transparent hover:border-fuchsia-300 hover:rounded-xl! hover:no-underline!"
+              >
+                Profile
+              </Link>
             </li>
             <li>
-              <Link to="/profile">Profile</Link>
-            </li>
-            <li>
-              <Link to="/upload">Upload</Link>
+              <Link
+                to="/upload"
+                className="px-3! py-2! border-2 border-transparent hover:border-fuchsia-300 hover:rounded-xl! hover:no-underline!"
+              >
+                Upload
+              </Link>
             </li>
           </ul>
           {user ? (

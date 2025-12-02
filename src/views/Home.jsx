@@ -18,17 +18,17 @@ const Home = () => {
         />
       )}
       <h2>My Media</h2>
-      <table>
+      <table className="table-fixed w-96">
         <thead>
-          <tr>
-            <th>Thumbnail</th>
-            <th>Title</th>
-            <th>Username</th>
-            <th>Description</th>
-            <th>Created</th>
-            <th>Size</th>
-            <th>Type</th>
-            <th></th>
+          <tr className="*:px-2!">
+            <th className="w-25">Thumbnail</th>
+            <th className="w-20">Title</th>
+            <th className="w-22">Username</th>
+            <th className="w-40">Description</th>
+            <th className="w-30">Created</th>
+            <th className="w-20">Size</th>
+            <th className="w-20">Type</th>
+            <th className="w-22"></th>
           </tr>
         </thead>
         <tbody>
