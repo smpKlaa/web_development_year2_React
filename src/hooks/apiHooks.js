@@ -48,11 +48,34 @@ const useMedia = () => {
     }
   }
 
+  async function updateMedia(token, id, values) {
+    try {
+      // values.id = id;
+      console.log(values);
+      const options = {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      };
+      const response = await fetchData(
+        import.meta.env.VITE_MEDIA_API + '/media/' + id,
+        options,
+      );
+
+      return response;
+    } catch (error) {
+      console.log('Error:', error);
+    }
+  }
+
   // React.useEffect(() => {
   //  getMedia();
   // }, []);
 
-  return {mediaArray, getMedia, deleteMedia};
+  return {mediaArray, getMedia, deleteMedia, updateMedia};
 };
 
 const useAuthentication = () => {

@@ -1,33 +1,62 @@
-import {Link} from 'react-router';
+import {Link, useNavigate} from 'react-router';
 import {useUserContext} from '../hooks/contextHooks';
 import {useMedia} from '../hooks/apiHooks';
+import {useState} from 'react';
 
 const MediaRow = (props) => {
   const {item, removeItem} = props;
+  const [title, setTitle] = useState(item.title);
+  const [description, setDescription] = useState(item.description);
   const {user} = useUserContext();
+  const [isEditing, setIsEditing] = useState(false);
+  const navigate = useNavigate();
 
-  const {deleteMedia} = useMedia();
+  const {deleteMedia, updateMedia} = useMedia();
 
   return (
     <>
       <tr className="max-h-34 *:px-2!" id={item.media_id}>
         <td>
           <div>
-            <img
-              className="thumbnail"
-              src={item.thumbnail}
-              alt={item.title}
-            ></img>
+            <img className="thumbnail" src={item.thumbnail} alt={title}></img>
           </div>
         </td>
         <td>
-          <div className="max-h-34">{item.title}</div>
+          <div className="max-h-34">
+            {isEditing ? (
+              <input
+                type="text"
+                className="w-full! mb-0!"
+                id={item.media_id + 'title-input'}
+                value={title}
+                defaultValue={title}
+                onChange={(e) => {
+                  setTitle(e.target.value);
+                }}
+              ></input>
+            ) : (
+              title
+            )}
+          </div>
         </td>
         <td>
           <div className="max-h-34">{item.username}</div>
         </td>
         <td>
-          <div className="overflow-clip max-h-34">{item.description}</div>
+          <div className="overflow-clip max-h-34">
+            {isEditing ? (
+              <input
+                className="w-full! mb-0!"
+                id={item.media_id + 'description-input'}
+                type="text"
+                value={description}
+                defaultValue={description}
+                onChange={(e) => setDescription(e.target.value)}
+              ></input>
+            ) : (
+              description
+            )}
+          </div>
         </td>
         <td>
           <div className="max-h-34">
@@ -63,12 +92,27 @@ const MediaRow = (props) => {
             {item?.username === user?.username ||
             user?.level_name === 'Admin' ? (
               <button
-                onClick={() => {
-                  console.log('Modify');
+                onClick={async () => {
+                  if (isEditing) {
+                    console.log('Save');
+                    setIsEditing(false);
+                    await updateMedia(
+                      localStorage.getItem('token'),
+                      item.media_id,
+                      {
+                        title,
+                        description,
+                      },
+                    );
+                    navigate(0);
+                  } else {
+                    console.log('Modify');
+                    setIsEditing(true);
+                  }
                 }}
                 className="w-20! no-underline! px-3! py-1! border-2 rounded-xl! border-transparent hover:rounded-xl! hover:no-underline!"
               >
-                Modify
+                {isEditing ? 'Save' : 'Modify'}
               </button>
             ) : null}
           </div>
